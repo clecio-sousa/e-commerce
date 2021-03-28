@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="page-header">
+	<h1>Produtos</h1>
+</div>
+
+<form action="{% url 'buscar' %}" method="GET">
+	<fieldset>
+		<div class="form-group">
+			<input class="form-control my-0 py-1 red-border" name="buscar" type="text"
+				placeholder="Pesquisar produto..." aria-label="Search">
+		</div>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Pesquisar</button>
+		</div>
+	</fieldset>
+</form>
+
+<div class="row">
+	{% if Produtos %}
+	{% for produto in Produtos %}
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<a href="{{ nome.nome_produto }}">
+				<img class="card-img-top" src="{{ produto.imagem_produto.url }}" height="300" alt="Card image cap">
+			</a>
+			<div class="caption">
+				<h3>{{ produto.nome_produto }}</h3>
+				<p>{{ produto.descricao_produto }}</p>
+				<h4>R$ {{ produto.preco_produto }}</h4>
+				<p><a href="{% url 'produto_detalhes' produto.slug %}" class="btn btn-success"
+						role="button">Detalhes</a> <a href="#" class="btn btn-default" role="button">Comprar</a></p>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+	{% endif %}
+
+</div>
+
+
+
+{% endblock %}

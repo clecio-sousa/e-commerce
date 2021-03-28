@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block conteudo %}
+
+<div class="container">
+	<div class="page-header">
+		<h1>Fale conosco</h1>
+		<form method="POST" action="{% url 'contato' %}" class="form-horizontal">
+			{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-{{message.tags}}" role="alert">
+				{{ message }}
+			</div>
+
+			{% endfor %}
+			{% endif %}
+			{% csrf_token %}
+			{{ form|crispy }}
+
+
+			<fieldset>
+
+				<div class="form-group">
+					<div class="col-md-9 col-md-offset-3">
+						<button type="submit" class="btn btn-primary">Enviar</button>
+					</div>
+				</div>
+			</fieldset>
+
+		</form>
+	</div>
+</div>
+{% endblock %}

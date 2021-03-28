@@ -1,0 +1,51 @@
+{% extends 'base-admin.html' %}
+
+
+{% block conteudo %}
+<!-- Content -->
+
+ <div class="container-fluid h6">
+	 <ol class="breadcrumb my-3 small">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Produtos</a></li>
+        <li class="breadcrumb-item active">{{ Produtos.nome_produto }}</li>
+    </ol>
+	<div class="card mb-4">
+		<div class="card-header d-flex align-items-center">
+			{{ Produtos.nome_produto }}
+			<div class="btn-toolbar ml-auto">
+				<a href="{% url 'editar_produto' Produtos.slug %}" type="button" class="btn btn-sm btn-outline-secondary mr-2">Editar</a>
+				<a href="{% url 'excluir_produto' Produtos.slug %}" type="button" class="btn btn-sm btn-outline-danger  ">Excluir</a>
+			</div>
+		</div>
+
+		<div class="card-body">
+			<table class="small table table-striped table-bordered w-100">
+			  <tbody>
+				<tr>
+					<td class="font-weight-bold w-25">ID</td>
+					<td class="w-75">{{ Produtos.id }}</td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Nome</td>
+					<td>{{ Produtos.nome_produto}}</td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Descrição</td>
+					<td>{{ Produtos.descricao_produto}}</td>
+				</tr>
+				<tr>
+					<td class="font-weight-bold">Preço</td>
+					<td> {{ Produtos.preco_produto}} </td>
+				</tr>
+			  <tr>
+					<td class="font-weight-bold">Data Publicação</td>
+					<td> {{ Produtos.data_publicacao}} </td>
+			  </tr>
+
+			  </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

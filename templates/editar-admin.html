@@ -1,0 +1,34 @@
+{% extends 'base-admin.html' %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+<!-- Content -->
+
+<div class="container-fluid">
+    <ol class="breadcrumb my-3 small">
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Produto</a></li>
+        <li class="breadcrumb-item active">Editar Produto</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-header d-flex align-items-center align-content-between">
+            <i class="icofont-bus mr-1"></i>Editar Produto:
+        </div>
+
+        <div class="card-body small">
+            <form method="POST">
+                <div class="form-group">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-sm btn-success mr-2"><i
+                            class="fa fa-check-circle mr-2"></i>Salvar Alterações</button>
+                    <a href="{% url 'dashboard' %}" type="button" class="btn btn-sm btn-secondary text-white"></i>Voltar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+<div class="page-header">
+	<h1>{{ Produtos.nome_produto }}</h1>
+</div>
+
+<div class="row">
+  <div class="col-sm-4">
+	  <a href="#" class="thumbnail">
+		  <img class="card-img-top" src="{{ Produtos.imagem_produto.url }}" height="300" alt="Card image cap">
+	  </a>
+  </div>
+  <div class="col-sm-8">
+	  <dl>
+		{{ Produtos.descricao_produto }}
+	  </dl>
+	  <h4> R$ {{ Produtos.preco_produto }}</h4>
+  </div>
+
+
+{% endblock %}
